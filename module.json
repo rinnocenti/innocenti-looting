@@ -1,0 +1,42 @@
+{
+  "name": "innocenti-looting",
+  "title": "Innocenti Looting",
+  "description": "<p>Modules for loot from monsters and Npcs</p>",
+  "author": "Renato innocenti",
+  "version": "0.1.0",
+  "minimumCoreVersion": "0.7.0",
+  "compatibleCoreVersion": "0.7.9",
+  "systems": [ "dnd5e" ],
+  "esmodules": [ "main.js", "scripts/settings.js" ],
+  "dependencies": [
+    {
+      "name": "lootsheetnpc5e",
+      "manifest": "https://raw.githubusercontent.com/jopeek/fvtt-loot-sheet-npc-5e/master/module.json"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "looting-macros",
+      "label": "Looting Demo",
+      "path": "packs/looting-macro.db",
+      "module": "innocenti-looting",
+      "entity": "Macro"
+    }
+  ],
+  "socket": true,
+  "url": "https://github.com/rinnocenti/innocenti-looting",
+  "manifest": "https://raw.githubusercontent.com/rinnocenti/innocenti-looting/main/module.json",
+  "download": "https://github.com/rinnocenti/innocenti-looting/archive/main.zip"
+}

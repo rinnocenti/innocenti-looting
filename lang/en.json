@@ -1,0 +1,19 @@
+{
+  "Looting.Errors": {
+    "noSelect": "Select a token",
+    "noToken": "No token is targeted",
+    "novalidLoot": " not a valid Loot",
+    "invalidDistance": "The maximum distance for this interaction is: {dist} grids",
+    "invalidCheck": "{token} already been looted"
+  },
+  "Looting.Settings": {
+    "percentWeapon": "Pilhagem de Armas (%)",
+    "percentWeaponHint": "Porcentagem de chance das armas no inventório do NPC não servirem para pilhagem (Foram danificadas)",
+    "percentEquipment": "Pilhagem de equipamento (%)",
+    "percentEquipmentHint": "Porcentagem de chance das armas no inventório do NPC não servirem para pilhagem (Foram danificadas)",
+    "percentConsumable": "Pilhagem de consumivel (%)",
+    "percentConsumableHint": "Porcentagem de chance das armas no inventório do NPC não servirem para pilhagem (Foram danificadas)",
+    "removeItem": "Remove Item from token",
+    "removeItemHint" : "Se ativado remove os itens do token (não remove do ator a menos que o token estiver linkado)"
+  }
+}
