@@ -1,6 +1,7 @@
 // JavaScript source code
 import { SETTINGS } from './settings.js';
 import { GMActions } from './gmactions.js';
+import { PickPocket } from './pickpocket.js';
 export class ActionLoot {
     constructor() {
         //
@@ -34,7 +35,7 @@ export class ActionLoot {
             } else {
                 // vivo - Roubar
                 if (entity.actor.getFlag(SETTINGS.MODULE_LOOT_SHEET, SETTINGS.LOOT_SHEET)) return; // não é um bau ou mercador.
-                this.PickPocket(entity.actor.items);
+                //this.AttempPickpocket(entity.actor, this.actor);
             }
             if (game.user.isGM) {
                 let gmaction = new GMActions(this.data);
@@ -43,23 +44,48 @@ export class ActionLoot {
                 game.socket.emit(`module.${SETTINGS.MODULE_NAME}`, this.data);
             }
         });
-        
+
     }
 
-    PickPocket(actoritems) {
+    AttempPickpocket(target, actor) {
+        // criar um dialogo para verificar se o jogador quer mesmo fzer o pickpocket
+        let d = new Dialog({
+            title: "PickPocket",
+            content: "<p>O alvo ainda está conciente e pode reagir, Você tem certeza que deseja roubar os alvos?</p>",
+            buttons: {
+                one: {
+                    icon: '<i class="fas fa-check"></i>',
+                    label: "Sim",
+                    callback: () => this.PickPocket(target, actor)
+                },
+                two: {
+                    icon: '<i class="fas fa-times"></i>',
+                    label: "Não",
+                    callback: () => console.log("Cancel Pickpoket")
+                }
+            },
+            default: "two",
+            //render: html => console.log("Register interactivity in the rendered dialog"),
+            //close: html => console.log("This always is logged no matter which option is chosen")
+        });
+        d.render(true);
+    }
+
+    PickPocket(target, tokenactor) {
         this.data.ppocket = true;
-        this.loots = this.LootItemList(actoritems);
+        this.loots = this.LootItemList(target.actor);
+        let pickpocket = new PickPocket(this.loots, target, tokenactor);
     }
 
-    LootNPC(actor, tokenactor) {
+    LootNPC(target, tokenactor) {
         this.data.looting = true;
         // Faz uma lista com possibilidade de perda do item.
-        let loots = this.LootItemList(actor.items);
+        let loots = this.LootItemList(target.items);
         // Cria os itens no token do usuário
         tokenactor.createEmbeddedEntity("OwnedItem", loots);
-        this.ResultChat("Looting", loots, actor.name);
+        this.ResultChat("Looting", loots, target.name);
         if (game.settings.get(SETTINGS.MODULE_NAME, "removeItem")) {
-            let items = this.LootItemList(actor.items, true);
+            let items = this.LootItemList(target.items, true);
             this.data.currentItems = items.map(i => i._id);
         }
     }

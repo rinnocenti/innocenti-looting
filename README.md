@@ -22,9 +22,10 @@ The module is system dependent:
 And the Modules:
 * Loot Sheet npc5e (by ChalkOne) for to differentiate combat npcs, chests and merchants: https://raw.githubusercontent.com/jopeek/fvtt-loot-sheet-npc-5e/master/module.json
 
-4) Create two macros with permission for all your players with the following content:
+Create a macro with permission for all your players with the following content:
 
 Macro - LOOTING
+
 `let actions = new InnocentiLoot.Loot();`
 
 ## How to Use
@@ -34,6 +35,7 @@ classes, spells, feats, natural weapons, siege weapons, vehicle equipment and na
 Items also have a percentage (configurable) chance of not being in good use and not being moved (and deleted) to the character sheet.
 
 ## Future Features
+* Looting Gold.
 * Pickpocket in lives npcs
 * Sort Golds in loot and robbery (maybe in rolltables)
 
