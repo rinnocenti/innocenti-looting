@@ -7,7 +7,7 @@ export class GMActions {
         this.actor = game.actors.entities.find(a => a.id === this.token.actor.id);
     }
 
-    async Init() {        
+    async Init() {     
         await this.SetFlags();
         if (this.data.currentItems != false) {
             await this.RemoveItems(this.targetToken.actor, this.data.currentItems)

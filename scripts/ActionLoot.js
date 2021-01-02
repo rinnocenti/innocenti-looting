@@ -1,5 +1,6 @@
 // JavaScript source code
 import { SETTINGS } from './settings.js';
+import { GMActions } from './gmactions.js';
 export class ActionLoot {
     constructor() {
         //
@@ -23,6 +24,7 @@ export class ActionLoot {
     // check targets
     async Check() {
         this.targets.forEach(entity => {
+            if (entity.id == canvas.tokens.controlled[0].id) return;
             if (this.CheckDistance(entity) != true) return;
             this.data.targetid = entity.id;
             if (entity.data.actorData.data.attributes.hp.value <= 0 && !entity.isPC) {
@@ -34,9 +36,14 @@ export class ActionLoot {
                 if (entity.actor.getFlag(SETTINGS.MODULE_LOOT_SHEET, SETTINGS.LOOT_SHEET)) return; // não é um bau ou mercador.
                 this.PickPocket(entity.actor.items);
             }
-            game.socket.emit(`module.${SETTINGS.MODULE_NAME}`, this.data);
+            if (game.user.isGM) {
+                let gmaction = new GMActions(this.data);
+                gmaction.Init();
+            } else {
+                game.socket.emit(`module.${SETTINGS.MODULE_NAME}`, this.data);
+            }
         });
-        console.log("Check", this)
+        
     }
 
     PickPocket(actoritems) {
@@ -49,7 +56,8 @@ export class ActionLoot {
         // Faz uma lista com possibilidade de perda do item.
         let loots = this.LootItemList(actor.items);
         // Cria os itens no token do usuário
-        tokenactor.createEmbeddedEntity("OwnedItem", loots);        
+        tokenactor.createEmbeddedEntity("OwnedItem", loots);
+        this.ResultChat("Looting", loots, actor.name);
         if (game.settings.get(SETTINGS.MODULE_NAME, "removeItem")) {
             let items = this.LootItemList(actor.items, true);
             this.data.currentItems = items.map(i => i._id);
@@ -75,6 +83,21 @@ export class ActionLoot {
             return item;
         });
     }
+    ResultChat(titleChat, items, targetName) {
+        let title = titleChat + '- ' + targetName;
+        let table_content = ``;
+        for (let item of items) {
+            table_content += `<div><img src="${item.img}" height="35px"/> ${item.name} <div>`;
+        }
+        let content = `<div>${table_content}</div>`;
+        ChatMessage.create({
+            content: content,
+            type: CONST.CHAT_MESSAGE_TYPES.EMOTE,
+            speaker: ChatMessage.getSpeaker(),
+            flavor: `<h2>${title}</h2>`
+        });
+    }
+
     CheckDistance(targetToken) {
         let minDistance = game.settings.get(SETTINGS.MODULE_NAME, "interactDistance");
         let gridDistance = (minDistance < 1) ? 1 : minDistance;
