@@ -10,9 +10,6 @@ Some items have a chance of not being in good use and will not be sent to the sh
 ## Installation
 You can install this module by using the following manifest URL : https://raw.githubusercontent.com/rinnocenti/innocenti-looting/main/module.json
 
-#### Maximum distance to interact (in grids) 
-the maximum distance for players to interact with the token in number of grids (default 1 unit).
-
 ## Dependencies
 This module was created to work in a world with other support modules so you don't have to increase your workload.
 
