@@ -13,6 +13,8 @@
     "percentEquipmentHint": "Porcentagem de chance das armas no inventório do NPC não servirem para pilhagem (Foram danificadas)",
     "percentConsumable": "Pilhagem de consumivel (%)",
     "percentConsumableHint": "Porcentagem de chance das armas no inventório do NPC não servirem para pilhagem (Foram danificadas)",
+    "interactDistance": "Distância máxima para interagir (em grade)",
+    "interactDistanceHint": "A distância mimáxima para os jogadores interagirem com a trava em unidades de grade do mapa",
     "removeItem": "Remover os Itens",
     "removeItemHint": "Se ativado remove os itens do token (não remove do ator a menos que o token estiver linkado)"
   }

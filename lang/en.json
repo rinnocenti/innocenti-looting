@@ -7,13 +7,15 @@
     "invalidCheck": "{token} already been looted"
   },
   "Looting.Settings": {
-    "percentWeapon": "Pilhagem de Armas (%)",
-    "percentWeaponHint": "Porcentagem de chance das armas no inventório do NPC não servirem para pilhagem (Foram danificadas)",
-    "percentEquipment": "Pilhagem de equipamento (%)",
-    "percentEquipmentHint": "Porcentagem de chance das armas no inventório do NPC não servirem para pilhagem (Foram danificadas)",
-    "percentConsumable": "Pilhagem de consumivel (%)",
-    "percentConsumableHint": "Porcentagem de chance das armas no inventório do NPC não servirem para pilhagem (Foram danificadas)",
+    "percentWeapon": "Weapons Loot (%)",
+    "percentWeaponHint": "Percentage chance of weapons in the NPC inventory not being looting (ie. too damaged for use)",
+    "percentEquipment": "Equipment Loot (%)",
+    "percentEquipmentHint": "Percentage chance of equipment in the NPC inventory not being looting (ie. too damaged for use)",
+    "percentConsumable": "Consumable Loot (%)",
+    "percentConsumableHint": "Percentage chance of consumable in the NPC inventory not being looting (too damaged for use)",
     "removeItem": "Remove Item from token",
-    "removeItemHint" : "Se ativado remove os itens do token (não remove do ator a menos que o token estiver linkado)"
+    "removeItemHint": "If enabled it removes items from the token (does not remove from the actor unless the token is linked)",
+    "interactDistance": "Maximum distance to interact (in grids)",
+    "interactDistanceHint": "the maximum distance for players to interact with the lock in number of grids"
   }
 }
