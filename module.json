@@ -3,7 +3,7 @@
   "title": "Innocenti Looting",
   "description": "<p>Modules for loot from monsters and Npcs</p>",
   "author": "Renato innocenti",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "minimumCoreVersion": "0.7.0",
   "compatibleCoreVersion": "0.7.9",
   "systems": [ "dnd5e" ],

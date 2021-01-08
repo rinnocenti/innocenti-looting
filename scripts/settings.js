@@ -7,6 +7,20 @@ export let SETTINGS = {
     LOOT: 'looting'
 }
 Hooks.once("init", () => {
+    game.settings.register(SETTINGS.MODULE_NAME, "lootSystem", {
+        name: game.i18n.localize('Looting.Settings.lootSystem'),
+        hint: game.i18n.localize('Looting.Settings.lootSystemHint'),
+        scope: "world",
+        config: true,
+        choices: {
+            "mode1": "Loot Iventory"//,
+            //"mode2": "Random Table Loot",
+            //"mode3": "Loot Iventory Random Loot"
+        },
+        default: "mode1",
+        onChange: value => console.log(value),
+        type: String
+    });
     game.settings.register(SETTINGS.MODULE_NAME, "interactDistance", {
         name: game.i18n.localize('Looting.Settings.interactDistance'),
         hint: game.i18n.localize('Looting.Settings.interactDistanceHint'),

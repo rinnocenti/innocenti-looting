@@ -1,4 +1,8 @@
 {
+  "Looting.MsgChat": {
+    "looting": "Looting",
+    "Currency": "Currency"
+  },
   "Looting.Errors": {
     "noSelect": "Select a token",
     "noToken": "No token is targeted",
@@ -16,6 +20,8 @@
     "removeItem": "Remove Item from token",
     "removeItemHint": "If enabled it removes items from the token (does not remove from the actor unless the token is linked)",
     "interactDistance": "Maximum distance to interact (in grids)",
-    "interactDistanceHint": "the maximum distance for players to interact with the lock in number of grids"
+    "interactDistanceHint": "the maximum distance for players to interact with the lock in number of grids",
+    "lootSystem": "Loot System",
+    "lootSystemHint": "Choose one of the ways to perform the loot (Soon)"
   }
 }

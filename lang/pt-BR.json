@@ -1,21 +1,27 @@
 {
+  "Looting.MsgChat": {
+    "looting": "Pilhando",
+    "Currency": "Moedas"
+  },
   "Looting.Errors": {
     "noSelect": "Selecione um Token",
     "noToken": "Nenhum token esta marcado como alvo",
-    "novalidLoot": " n„o È um ba˙ v·lido",
-    "invalidDistance": "A distancia minima para esta interaÁ„o È: {dist} quadros",
-    "invalidCheck": "{token} j· foi pilhado"
+    "novalidLoot": " n√£o √© um ba√∫ v√°lido",
+    "invalidDistance": "A distancia minima para esta intera√ß√£o √©: {dist} quadros",
+    "invalidCheck": "{token} j√° foi pilhado"
   },
   "Looting.Settings": {
     "percentWeapon": "Pilhagem de Armas (%)",
-    "percentWeaponHint": "Porcentagem de chance das armas no inventÛrio do NPC n„o servirem para pilhagem (Foram danificadas)",
+    "percentWeaponHint": "Porcentagem de chance das armas no invent√≥rio do NPC n√£o servirem para pilhagem (Foram danificadas)",
     "percentEquipment": "Pilhagem de equipamento (%)",
-    "percentEquipmentHint": "Porcentagem de chance das armas no inventÛrio do NPC n„o servirem para pilhagem (Foram danificadas)",
+    "percentEquipmentHint": "Porcentagem de chance das armas no invent√≥rio do NPC n√£o servirem para pilhagem (Foram danificadas)",
     "percentConsumable": "Pilhagem de consumivel (%)",
-    "percentConsumableHint": "Porcentagem de chance das armas no inventÛrio do NPC n„o servirem para pilhagem (Foram danificadas)",
-    "interactDistance": "Dist‚ncia m·xima para interagir (em grade)",
-    "interactDistanceHint": "A dist‚ncia mim·xima para os jogadores interagirem com a trava em unidades de grade do mapa",
+    "percentConsumableHint": "Porcentagem de chance das armas no invent√≥rio do NPC n√£o servirem para pilhagem (Foram danificadas)",
+    "interactDistance": "Dist√¢ncia m√°xima para interagir (em grade)",
+    "interactDistanceHint": "A dist√¢ncia mim√°xima para os jogadores interagirem com a trava em unidades de grade do mapa",
     "removeItem": "Remover os Itens",
-    "removeItemHint": "Se ativado remove os itens do token (n„o remove do ator a menos que o token estiver linkado)"
+    "removeItemHint": "Se ativado remove os itens do token (n√£o remove do ator a menos que o token estiver linkado)",
+    "lootSystem": "Sistema de Pilhagem",
+    "lootSystemHint": "Escolha uma das formas para realizar a pilhagem (em breve)"
   }
 }

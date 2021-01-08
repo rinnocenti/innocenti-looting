@@ -18,32 +18,42 @@ export class ActionLoot {
             targetid: false,
             looting: false,
             ppocket: false,
-            currentItems: false
+            currentItems: false,
+            currency: {}
         }
-        this.Check();
+        this.lootCurrency = {};
+        this.betterTables = game.modules.get("better-rolltables");
+        //console.log(this);
     }
     // check targets
     async Check() {
-        this.targets.forEach(entity => {
+        for (let entity of this.targets) {
+            //this.targets.map(entity => {
             if (entity.id == canvas.tokens.controlled[0].id) return;
             if (this.CheckDistance(entity) != true) return;
             this.data.targetid = entity.id;
-            if (entity.data.actorData.data.attributes.hp.value <= 0 && !entity.isPC) {
+            let titleChat = "";
+            if (entity.actor.data.data.attributes.hp.value <= 0 && !entity.isPC) {
                 // Morto - lootiar
+                titleChat = game.i18n.localize('Looting.MsgChat.looting');
                 if (entity.getFlag(SETTINGS.MODULE_NAME, SETTINGS.LOOT)) return ui.notifications.warn(game.i18n.format("Looting.Errors.invalidCheck", { token: entity.name })); // já foi lootiado.
-                this.LootNPC(entity.actor, this.actor);
+                await this.LootNPC(entity.actor, this.actor);                
             } else {
                 // vivo - Roubar
                 if (entity.actor.getFlag(SETTINGS.MODULE_LOOT_SHEET, SETTINGS.LOOT_SHEET)) return; // não é um bau ou mercador.
                 //this.AttempPickpocket(entity.actor, this.actor);
             }
-            if (game.user.isGM) {
-                let gmaction = new GMActions(this.data);
-                gmaction.Init();
-            } else {
-                game.socket.emit(`module.${SETTINGS.MODULE_NAME}`, this.data);
+            await this.AttempItemRemove(entity.actor);
+            if (this.data.looting || this.data.ppocket) {
+                this.ResultChat(titleChat, this.loots, entity.name, this.lootCurrency);
+                if (game.user.isGM) {
+                    let gmaction = new GMActions(this.data);
+                    gmaction.Init();
+                } else {
+                    game.socket.emit(`module.${SETTINGS.MODULE_NAME}`, this.data);
+                }
             }
-        });
+        }
 
     }
 
@@ -73,25 +83,50 @@ export class ActionLoot {
 
     PickPocket(target, tokenactor) {
         this.data.ppocket = true;
-        this.loots = this.LootItemList(target.actor);
+        this.loots = this.InventoryChancesLoot(target.actor);
         let pickpocket = new PickPocket(this.loots, target, tokenactor);
     }
 
-    LootNPC(target, tokenactor) {
+    async LootNPC(target, tokenactor) {
         this.data.looting = true;
-        // Faz uma lista com possibilidade de perda do item.
-        let loots = this.LootItemList(target.items);
-        // Cria os itens no token do usuário
-        tokenactor.createEmbeddedEntity("OwnedItem", loots);
-        this.ResultChat("Looting", loots, target.name);
+        this.data.currency = duplicate(tokenactor.data.data.currency);
+        // tipos de loot
+        if (game.settings.get(SETTINGS.MODULE_NAME, "lootSystem") == "mode1") {
+            this.loots = await this.InventoryChancesLoot(target.items);
+            for (var coin in this.lootCurrency) {
+                this.data.currency[coin] = this.data.currency[coin] + this.lootCurrency[coin];
+            }
+        } else if (game.settings.get(SETTINGS.MODULE_NAME, "lootSystem") == "mode2") {
+
+        } else if (game.settings.get(SETTINGS.MODULE_NAME, "lootSystem") == "mode3") {
+
+        }
+        await tokenactor.createEmbeddedEntity("OwnedItem", this.loots);
+        await tokenactor.update({ "data.currency": this.data.currency });
+    }
+
+    async AttempItemRemove(target) {
         if (game.settings.get(SETTINGS.MODULE_NAME, "removeItem")) {
-            let items = this.LootItemList(target.items, true);
+            let items = await this.FilterInventory(target.items);
             this.data.currentItems = items.map(i => i._id);
         }
     }
 
-    LootItemList(actoritems, check = false) {
-        return actoritems.filter(item => {
+    async FilterInventory(items) {
+        let filtro = await items.filter(item => {
+            if (item == null || item == undefined) return;
+            if (item.type == "class" || item.type == "spell" || item.type == "feat") return;
+            if (item.type === "weapon" && (item.data.data.weaponType == "siege" || item.data.data.weaponType == "natural")) return;
+            if (item.type === "equipment" && (item.data.data.equipmentType == "vehicle" || item.data.data.equipmentType == "natural")) return;
+            return item;
+        });
+        return filtro;
+
+    }
+
+    async InventoryChancesLoot(actoritems, check = false) {
+        let tables=[];
+        let ac = await actoritems.filter(item => {
             if (item == null || item == undefined) return;
             if (item.type == "class" || item.type == "spell" || item.type == "feat") return;
             // weapon equipment consumable
@@ -106,16 +141,89 @@ export class ActionLoot {
             if (item.type === "consumable") {
                 if (!check && (Math.floor(Math.random() * 100) + 1) <= game.settings.get(SETTINGS.MODULE_NAME, "perConsumable")) return;
             }
+            if (item.type === "loot") {
+                if (this.ConvertItens2Coins(item)) return;
+                let matches = item.name.match(/Table:([\w\s\S]+)/gis);
+                if (matches) {
+                    let t = matches[0].split('Table:');
+                    tables.push(t[1].trim());
+                    return;
+                }
+            }
             return item;
         });
+        for (let tableroll of tables) {
+            let item = await this.ConvertItems2TableLoot(tableroll);
+            if (item) {
+                ac.push(...item)
+            }
+        }
+        //console.log("All Loot", ac, this.lootCurrency);
+        return ac;
     }
-    ResultChat(titleChat, items, targetName) {
+
+
+    async ConvertItems2TableLoot(tableroll) {
+        let nItems = [];
+        let table = game.tables.getName(tableroll);
+        if (this.betterTables && this.betterTables.active) {
+            //Bettertable
+            let re = await table.roll();
+            let result = await re.results;
+            for (let r of result) {
+                let packs = game.packs.get(r.collection);
+                let entity = (packs) ? await packs.getEntity(r.resultId) : game.items.get(r.resultId);
+                if (this.ConvertItens2Coins(entity)) return;
+                nItems.push(entity);
+            }
+        } else {
+            //Vanilla
+            let re = await table.roll();
+            let result = await re.results;
+            for (let r of result) {
+                let packs = game.packs.get(r.collection);
+                let entity = (packs) ? await packs.getEntity(r.resultId) : game.items.get(r.resultId);
+                if (this.ConvertItens2Coins(entity)) return;
+                nItems.push(entity);
+            }
+        }
+       // console.log("items", nItems);
+        return nItems;
+    }
+
+    ConvertItens2Coins(item) {
+        let matches = item.name.match(/\([a-z]{1,2}\)$/gs);
+        if (matches) {
+            let coin = matches[0].substring(1, matches[0].length - 1);
+            if (!this.lootCurrency[`${coin}`]) this.lootCurrency[`${coin}`] = 0;
+            if (item.data.data.source.match(/[dkfhxo]{1}[0-9\s\+\-\*\/]+/gs)) {
+                let r = new Roll(item.data.data.source);
+                this.lootCurrency[`${coin}`] += r.evaluate().total;
+            } else {
+                this.lootCurrency[`${coin}`] += item.data.data.quantity;
+            }
+            Object.keys(this.lootCurrency).sort()
+            return true;
+        }
+        return false;
+    }
+
+    ResultChat(titleChat, items, targetName, currency) {
         let title = titleChat + '- ' + targetName;
         let table_content = ``;
+        console.log(currency)
+        //console.log("result chat", items);
         for (let item of items) {
             table_content += `<div><img src="${item.img}" height="35px"/> ${item.name} <div>`;
         }
         let content = `<div>${table_content}</div>`;
+        if (currency) {
+            let coins = '';
+            for (let coin in currency) {
+                coins += `<strong>${coin}</strong>: ${currency[coin]} `;
+            }
+            content = content + `<div><hr/><h3>${game.i18n.localize('Looting.MsgChat.Currency')}</h3> <p>${coins}</p></div>`;
+        }
         ChatMessage.create({
             content: content,
             type: CONST.CHAT_MESSAGE_TYPES.EMOTE,
