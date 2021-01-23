@@ -32,7 +32,7 @@ await actions.Check();
 the module basically works looking for a items in the token inventory of npc with hp 0, can be looted using the target with a macro, unless they are:
 classes, spells, feats, natural weapons, siege weapons, vehicle equipment and natural equipment.
 
-### Loot Currency end Cois
+### Loot Currency end Coins
 From version 0.2 the module adapts a new type of loot for currencys.
 
 a loot type item that has the end of its name, in brackets, the abbreviation of the currencies in force will be considered coins of the same type. for example:
