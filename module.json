@@ -3,7 +3,7 @@
   "title": "Innocenti Looting",
   "description": "<p>Modules for loot from monsters and Npcs</p>",
   "author": "Renato innocenti",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "minimumCoreVersion": "0.7.0",
   "compatibleCoreVersion": "0.7.9",
   "systems": [ "dnd5e" ],
@@ -29,10 +29,18 @@
   "packs": [
     {
       "name": "looting-macros",
-      "label": "Looting Demo",
+      "label": "Macro Looting",
       "path": "packs/looting-macro.db",
       "module": "innocenti-looting",
       "entity": "Macro"
+    },
+
+    {
+      "name": "looting-items",
+      "label": "Looting Items Currency",
+      "path": "packs/item-currency.db",
+      "module": "innocenti-looting",
+      "entity": "Item"
     }
   ],
   "socket": true,

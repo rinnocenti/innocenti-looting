@@ -22,6 +22,10 @@
     "removeItem": "Remover os Itens",
     "removeItemHint": "Se ativado remove os itens do token (não remove do ator a menos que o token estiver linkado)",
     "lootSystem": "Sistema de Pilhagem",
-    "lootSystemHint": "Escolha uma das formas para realizar a pilhagem (em breve)"
+    "lootSystemHint": "Escolha uma das formas para realizar a pilhagem (em breve)",
+    "lootEquipable": "Pilhar equipamentos equipados",
+    "lootEquipableHint": "Se desativado o jogador não poderá pilhar itens equipados, se ativado o jogador poderá pilhar itens equipados porém com um ágio adicional da arma não estar em condição",
+    "lootEquipableAgil": "Ágio para itens equipados (%)",
+    "lootEquipableAgilHint": "Porcentagem de chance adicional do item equipado no NPC não servirem para pilhagem (Foram danificadas)"
   }
 }

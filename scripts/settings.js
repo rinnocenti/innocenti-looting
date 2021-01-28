@@ -61,4 +61,20 @@ Hooks.once("init", () => {
         default: true,
         type: Boolean
     });
+    game.settings.register(SETTINGS.MODULE_NAME, "lootEquipable", {
+        name: game.i18n.localize('Looting.Settings.lootEquipable'),
+        hint: game.i18n.localize('Looting.Settings.lootEquipableHint'),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean
+    });
+    game.settings.register(SETTINGS.MODULE_NAME, "lootEquipableAgil", {
+        name: game.i18n.localize('Looting.Settings.lootEquipableAgil'),
+        hint: game.i18n.localize('Looting.Settings.lootEquipableAgilHint'),
+        scope: "world",
+        config: true,
+        default: "5",
+        type: Number
+    });
 });
