@@ -1,3 +1,10 @@
+# v0.2.2
+
+* Support for multiple currency values drawn in roll tables
+* Suport for avoid equipped items
+* BUGFIX: Equipped items do not transfer equipped to the player
+* Add Compendium for currency types
+
 # v.0.2.0
 
 [BREAKING] - New macro, please replace.

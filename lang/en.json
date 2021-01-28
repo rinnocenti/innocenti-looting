@@ -22,6 +22,10 @@
     "interactDistance": "Maximum distance to interact (in grids)",
     "interactDistanceHint": "the maximum distance for players to interact with the lock in number of grids",
     "lootSystem": "Loot System",
-    "lootSystemHint": "Choose one of the ways to perform the loot (Soon)"
+    "lootSystemHint": "Choose one of the ways to perform the loot (Soon)",
+    "lootEquipable": "Loot equipped items",
+    "lootEquipableHint": "If disabled, the player can not loot equipped items, if enabled the player can loot items equipped but with an additional % of items in that condition",
+    "lootEquipableAgil": "addict for equipped items (%)",
+    "lootEquipableAgilHint": "Percentage of additional chance of equipped item in NPC not to looting (ie. too damaged for use)"
   }
 }
