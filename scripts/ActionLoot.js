@@ -29,7 +29,7 @@ export class ActionLoot {
     async Check() {
         for (let entity of this.targets) {
             //this.targets.map(entity => {
-            if (entity.id == canvas.tokens.controlled[0].id) return;
+            if (entity.id == canvas.tokens.controlled[0].id) return ui.notifications.warn(game.i18n.localize('Looting.Errors.thesame'));
             if (this.CheckDistance(entity) != true) return;
             this.data.targetid = entity.id;
             let titleChat = "";
@@ -39,6 +39,7 @@ export class ActionLoot {
                 if (entity.getFlag(SETTINGS.MODULE_NAME, SETTINGS.LOOT)) return ui.notifications.warn(game.i18n.format("Looting.Errors.invalidCheck", { token: entity.name })); // já foi lootiado.
                 await this.LootNPC(entity.actor, this.actor);
             } else {
+                ui.notifications.warn(game.i18n.localize('Looting.Errors.isalive'))
                 // vivo - Roubar
                 if (entity.actor.getFlag(SETTINGS.MODULE_LOOT_SHEET, SETTINGS.LOOT_SHEET)) return; // não é um bau ou mercador.
                 //this.AttempPickpocket(entity.actor, this.actor);
@@ -101,7 +102,10 @@ export class ActionLoot {
         } else if (game.settings.get(SETTINGS.MODULE_NAME, "lootSystem") == "mode3") {
 
         }
-        await tokenactor.createEmbeddedEntity("OwnedItem", this.loots);
+        this.loots.map(a => {
+            a._data.data.equipped = false;
+        });
+        await tokenactor.createEmbeddedEntity("OwnedItem", this.loots, { noHook: true });
         await tokenactor.update({ "data.currency": this.data.currency });
     }
 
@@ -132,15 +136,14 @@ export class ActionLoot {
             let agio = (game.settings.get(SETTINGS.MODULE_NAME, "lootEquipable")) ? game.settings.get(SETTINGS.MODULE_NAME, "lootEquipableAgil") : 0;
             // weapon equipment consumable
             if (!game.settings.get(SETTINGS.MODULE_NAME, "lootEquipable") && item.data.data.equipped) return;
+            item._data.data.equipped = false;
             if (item.type === "weapon") {
                 if (item.data.data.weaponType == "siege" || item.data.data.weaponType == "natural") return;
-                if (!check && (Math.floor(Math.random() * 100) + 1) <= game.settings.get(SETTINGS.MODULE_NAME, "perWeapons") + agio) return;
-                item.data.data.equipped = false;
+                if (!check && (Math.floor(Math.random() * 100) + 1) <= game.settings.get(SETTINGS.MODULE_NAME, "perWeapons") + agio) return;  
             }
             if (item.type === "equipment") {
                 if (item.data.data.equipmentType == "vehicle" || item.data.data.equipmentType == "natural") return;
                 if (!check && (Math.floor(Math.random() * 100) + 1) <= game.settings.get(SETTINGS.MODULE_NAME, "perEquipment") + agio) return;
-                item.data.data.equipped = false;
             }
             if (item.type === "consumable") {
                 if (!check && (Math.floor(Math.random() * 100) + 1) <= game.settings.get(SETTINGS.MODULE_NAME, "perConsumable") + agio) return;
@@ -149,7 +152,8 @@ export class ActionLoot {
                 //if (this.ConvertItens2Coins(item)) return;
                 let matches = item.name.match(/\([a-z]{1,2}\)$/gs);
                 if (matches) {
-                    this.ConvertItens2Coins(coin, item);
+                    this.ConvertItens2Coins(matches, item);
+                    return;
                 }
                 let tmatches = item.name.match(/Table:([\w\s\S]+)/gis);
                 if (tmatches) {
@@ -205,8 +209,8 @@ export class ActionLoot {
                 }
             }
         }
-        console.log("items", nItems);
-        console.log(this.lootCurrency);
+        //console.log("items", nItems);
+        //console.log(this.lootCurrency);
         return nItems;
     }
 
@@ -223,7 +227,7 @@ export class ActionLoot {
     ResultChat(titleChat, items, targetName, currency) {
         let title = titleChat + '- ' + targetName;
         let table_content = ``;
-        console.log(currency)
+        //console.log(currency)
         //console.log("result chat", items);
         for (let item of items) {
             table_content += `<div><img src="${item.img}" height="35px"/> ${item.name} <div>`;

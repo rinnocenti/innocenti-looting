@@ -8,7 +8,9 @@
     "noToken": "No token is targeted",
     "novalidLoot": " not a valid Loot",
     "invalidDistance": "The maximum distance for this interaction is: {dist} grids",
-    "invalidCheck": "{token} already been looted"
+    "invalidCheck": "{token} already been looted",
+    "isalive": "The target is alive!",
+    "thesame": "the looting token is the same as the loot token"
   },
   "Looting.Settings": {
     "percentWeapon": "Weapons Loot (%)",

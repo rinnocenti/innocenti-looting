@@ -8,7 +8,8 @@
     "noToken": "Nenhum token esta marcado como alvo",
     "novalidLoot": " não é um baú válido",
     "invalidDistance": "A distancia minima para esta interação é: {dist} quadros",
-    "invalidCheck": "{token} já foi pilhado"
+    "invalidCheck": "{token} já foi pilhado",
+    "isalive": "O alvo ainda esta vivo!"
   },
   "Looting.Settings": {
     "percentWeapon": "Pilhagem de Armas (%)",

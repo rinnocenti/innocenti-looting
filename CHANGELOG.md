@@ -1,4 +1,8 @@
-# v0.2.2
+# v.0.2.3
+* Bug fix in individual currency values.
+* Log errors for live token and mistake for looting self token.
+
+# v.0.2.2
 
 * Support for multiple currency values drawn in roll tables
 * Suport for avoid equipped items
