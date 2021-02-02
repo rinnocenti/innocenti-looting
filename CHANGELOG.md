@@ -1,4 +1,9 @@
+# v.0.2.4
+
+* French Translate (thanks to <a href="https://github.com/Elfenduil">Elfenduil</a>")
+
 # v.0.2.3
+
 * Bug fix in individual currency values.
 * Log errors for live token and mistake for looting self token.
 
