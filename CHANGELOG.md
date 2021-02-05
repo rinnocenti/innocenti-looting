@@ -1,10 +1,6 @@
 # v.0.2.4
 
-<<<<<<< HEAD
 * French Translate (thanks to <a href="https://github.com/Elfenduil">Elfenduil</a>")
-=======
-* Franch TRanslate (thanks to <a href="https://github.com/Elfenduil">Elfenduil</a>")
->>>>>>> main
 
 # v.0.2.3
 

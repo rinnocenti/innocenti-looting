@@ -5,29 +5,29 @@
   },
   "Looting.Errors": {
     "noSelect": "Selectionner un token",
-    "noToken": "Pas de token ciblé",
+    "noToken": "Pas de token ciblÃ©",
     "novalidLoot": " n'est pas un butin valide ",
     "invalidDistance": "La distance maximum pour interagir est de : {dist} cases",
-    "invalidCheck": "{token} a déjà été pillé",
+    "invalidCheck": "{token} a dÃ©jÃ  Ã©tÃ© pillÃ©",
     "isalive": "La cible est toujours en vie!",
-    "thesame": "le jeton de pillage est le même que le jeton de butin"
+    "thesame": "le jeton de pillage est le mÃªme que le jeton de butin"
   },
   "Looting.Settings": {
     "percentWeapon": "Butin armement (%)",
-    "percentWeaponHint": "Pourcentage de chances que les armes de l'inventaire des PNJ ne soient pas pillées (ex. trop endommagés)",
-    "percentEquipment": "Butin équipement (%)",
-    "percentEquipmentHint": "Pourcentage de chances que les équipements de l'inventaire des PNJ ne soient pas pillées (ex. trop endommagés)",
+    "percentWeaponHint": "Pourcentage de chances que les armes de l'inventaire des PNJ ne soient pas pillÃ©es (ex. trop endommagÃ©s)",
+    "percentEquipment": "Butin Ã©quipement (%)",
+    "percentEquipmentHint": "Pourcentage de chances que les Ã©quipements de l'inventaire des PNJ ne soient pas pillÃ©es (ex. trop endommagÃ©s)",
     "percentConsumable": "Butin consommable (%)",
-    "percentConsumableHint": "Pourcentage de chances que les consommables de l'inventaire des PNJ ne soient pas pillées (ex. trop endommagés)",
+    "percentConsumableHint": "Pourcentage de chances que les consommables de l'inventaire des PNJ ne soient pas pillÃ©es (ex. trop endommagÃ©s)",
     "removeItem": "Retirer les objets du jeton",
-    "removeItemHint": "S'il est activé, il supprime les objets du jeton  (ne supprime pas de l'acteur sauf si le jeton est lié )",
+    "removeItemHint": "S'il est activÃ©, il supprime les objets du jeton  (ne supprime pas de l'acteur sauf si le jeton est liÃ© )",
     "interactDistance": "Distance maximum pour interagir(en casses)",
     "interactDistanceHint": "la distance maximale pour que les joueurs interagissent avec la serrure en nombre de cases ",
-    "lootSystem": "Système de butin",
-    "lootSystemHint": "Choisissez l'une des façons d'effectuer le pillage (bientôt)",
-    "lootEquipable": "Piller des objets équipés",
-    "lootEquipableHint": "Si désactivé, le joueur ne peut pas piller les objets équipés, si activé, le joueur peut piller les objets équipés mais avec un% supplémentaire d'objets dans cette condition ",
-    "lootEquipableAgil": "ajouter pour les équipements équipés (%)",
-    "lootEquipableAgilHint": "Pourcentage de chance supplémentaire de l'objet équipé dans le PNJ de ne pas être piller (ex. trop endommagés)"
+    "lootSystem": "SystÃ¨me de butin",
+    "lootSystemHint": "Choisissez l'une des faÃ§ons d'effectuer le pillage (bientÃ´t)",
+    "lootEquipable": "Piller des objets Ã©quipÃ©s",
+    "lootEquipableHint": "Si dÃ©sactivÃ©, le joueur ne peut pas piller les objets Ã©quipÃ©s, si activÃ©, le joueur peut piller les objets Ã©quipÃ©s mais avec un% supplÃ©mentaire d'objets dans cette condition ",
+    "lootEquipableAgil": "ajouter pour les Ã©quipements Ã©quipÃ©s (%)",
+    "lootEquipableAgilHint": "Pourcentage de chance supplÃ©mentaire de l'objet Ã©quipÃ© dans le PNJ de ne pas Ãªtre piller (ex. trop endommagÃ©s)"
   }
 }
