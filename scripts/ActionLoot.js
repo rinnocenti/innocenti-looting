@@ -149,10 +149,10 @@ export class ActionLoot {
                 if (!check && (Math.floor(Math.random() * 100) + 1) <= game.settings.get(SETTINGS.MODULE_NAME, "perConsumable") + agio) return;
             }
             if (item.type === "loot") {
-                //if (this.ConvertItens2Coins(item)) return;
                 let matches = item.name.match(/\([a-z]{1,2}\)$/gs);
                 if (matches) {
-                    this.ConvertItens2Coins(matches, item);
+                    let coin = matches[0].substring(1, matches[0].length - 1);
+                    this.ConvertItens2Coins(coin, item);
                     return;
                 }
                 let tmatches = item.name.match(/Table:([\w\s\S]+)/gis);
@@ -170,7 +170,6 @@ export class ActionLoot {
                 ac.push(...item)
             }
         }
-        //console.log("All Loot", ac, this.lootCurrency);
         return ac;
     }
 
@@ -227,8 +226,6 @@ export class ActionLoot {
     ResultChat(titleChat, items, targetName, currency) {
         let title = titleChat + '- ' + targetName;
         let table_content = ``;
-        //console.log(currency)
-        //console.log("result chat", items);
         for (let item of items) {
             table_content += `<div><img src="${item.img}" height="35px"/> ${item.name} <div>`;
         }

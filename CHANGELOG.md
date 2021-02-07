@@ -1,3 +1,7 @@
+#v.0.2.5
+
+* Fix Bug in simple currency
+
 # v.0.2.4
 
 * French Translate (thanks to <a href="https://github.com/Elfenduil">Elfenduil</a>")
