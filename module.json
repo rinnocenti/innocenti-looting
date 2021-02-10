@@ -1,11 +1,17 @@
 {
   "name": "innocenti-looting",
   "title": "Innocenti Looting",
-  "description": "<p>Modules for loot from monsters and Npcs</p>",
-  "author": "Renato innocenti",
-  "version": "0.2.5",
+  "description": "Modules for loot from monsters and Npcs",
+  "version": "0.2.6",
   "minimumCoreVersion": "0.7.0",
   "compatibleCoreVersion": "0.7.9",
+  "author": "Renato innocenti",
+  "authors": [
+    {
+      "name": "Innocenti",
+      "discord": "Innocenti#1455"
+    }
+  ],
   "systems": [ "dnd5e" ],
   "esmodules": [ "main.js", "scripts/settings.js" ],
   "dependencies": [
@@ -48,8 +54,32 @@
       "entity": "Item"
     }
   ],
+  "media": [
+    {
+      "type": "cover",
+      "link": "https://github.com/rinnocenti/innocenti-looting/raw/main/img/cover.jpg"
+    },
+    {
+      "type": "screenshot",
+      "link": "https://github.com/rinnocenti/innocenti-looting/raw/main/img/item-coin.png"
+    },
+    {
+      "type": "screenshot",
+      "link": "https://github.com/rinnocenti/innocenti-openlock/raw/main/imgs/readme04.png"
+    },
+    {
+      "type": "screenshot",
+      "link": "https://github.com/rinnocenti/innocenti-openlock/raw/main/imgs/readme02.png"
+    },
+    {
+      "type": "screenshot",
+      "link": "https://github.com/rinnocenti/innocenti-openlock/raw/main/imgs/readme03.png"
+    }
+  ],
   "socket": true,
   "url": "https://github.com/rinnocenti/innocenti-looting",
   "manifest": "https://raw.githubusercontent.com/rinnocenti/innocenti-looting/main/module.json",
-  "download": "https://github.com/rinnocenti/innocenti-looting/archive/main.zip"
+  "download": "https://github.com/rinnocenti/innocenti-looting/archive/main.zip",
+  "bugs": "https://github.com/rinnocenti/innocenti-looting/issues",
+  "readme": "https://github.com/rinnocenti/innocenti-looting/blob/main/README.md"
 }
