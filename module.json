@@ -60,6 +60,11 @@
       "link": "https://github.com/rinnocenti/innocenti-looting/raw/main/img/cover.jpg"
     },
     {
+      "type": "video",
+      "link": "https://www.youtube.com/watch?v=v6JPQ9MWi4U",
+      "loop": false
+    },
+    {
       "type": "screenshot",
       "link": "https://github.com/rinnocenti/innocenti-looting/raw/main/img/item-coin.png"
     },
