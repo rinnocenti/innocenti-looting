@@ -8,7 +8,7 @@ With it the token's targets will have their items moved to the user's sheet.
 Some items have a chance of not being in good use and will not be sent to the sheet (configurable percentage).
 
 youtube Video:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/v6JPQ9MWi4U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<a href="https://www.youtube.com/embed/v6JPQ9MWi4U">Youtube - Innocenti Looting</a>
 
 ## Installation
 You can install this module by using the following manifest URL : https://raw.githubusercontent.com/rinnocenti/innocenti-looting/main/module.json
