@@ -10,7 +10,8 @@
     "invalidDistance": "La distance maximum pour interagir est de : {dist} cases",
     "invalidCheck": "{token} a déjà été pillé",
     "isalive": "La cible est toujours en vie!",
-    "thesame": "le jeton de pillage est le même que le jeton de butin"
+    "thesame": "le jeton de pillage est le même que le jeton de butin",
+    "notItem": "the item not exist in world"
   },
   "Looting.Settings": {
     "percentWeapon": "Butin armement (%)",

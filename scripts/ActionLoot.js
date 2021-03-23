@@ -27,6 +27,7 @@ export class ActionLoot {
     }
     // check targets
     async Check() {
+        if (this.targets == undefined || this.targets.size <= 0) return;
         for (let entity of this.targets) {
             //this.targets.map(entity => {
             if (entity.id == canvas.tokens.controlled[0].id) return ui.notifications.warn(game.i18n.localize('Looting.Errors.thesame'));
@@ -184,6 +185,7 @@ export class ActionLoot {
             for (let r of result) {
                 let packs = game.packs.get(r.collection);
                 let entity = (packs) ? await packs.getEntity(r.resultId) : game.items.get(r.resultId);
+                if (!entity) return ui.notifications.error(game.i18n.localize('Looting.Errors.notItem'));
                 let matches = entity.name.match(/\([a-z]{1,2}\)$/gs);
                 if (matches) {
                     let coin = matches[0].substring(1, matches[0].length - 1);

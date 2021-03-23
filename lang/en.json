@@ -10,7 +10,8 @@
     "invalidDistance": "The maximum distance for this interaction is: {dist} grids",
     "invalidCheck": "{token} already been looted",
     "isalive": "The target is alive!",
-    "thesame": "the looting token is the same as the loot token"
+    "thesame": "the looting token is the same as the loot token",
+    "notItem": "the item not exist in world"
   },
   "Looting.Settings": {
     "percentWeapon": "Weapons Loot (%)",

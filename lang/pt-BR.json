@@ -9,7 +9,8 @@
     "novalidLoot": " não é um baú válido",
     "invalidDistance": "A distancia minima para esta interação é: {dist} quadros",
     "invalidCheck": "{token} já foi pilhado",
-    "isalive": "O alvo ainda esta vivo!"
+    "isalive": "O alvo ainda esta vivo!",
+    "notItem": "O item não existe no mundo"
   },
   "Looting.Settings": {
     "percentWeapon": "Pilhagem de Armas (%)",
