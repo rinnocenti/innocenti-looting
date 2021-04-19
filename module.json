@@ -1,8 +1,8 @@
 {
   "name": "innocenti-looting",
-  "title": "Innocenti Looting",
+  "title": "Innocenti's Looting",
   "description": "Modules for loot from monsters and Npcs",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "minimumCoreVersion": "0.7.0",
   "compatibleCoreVersion": "0.7.9",
   "author": "Renato innocenti",
