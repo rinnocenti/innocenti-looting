@@ -1,3 +1,6 @@
+#v.0.2.6
+Update for Foundry 0.8.5
+
 #v.0.2.5
 
 * Fix Bug in simple currency

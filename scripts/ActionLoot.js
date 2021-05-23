@@ -23,13 +23,11 @@ export class ActionLoot {
         }
         this.lootCurrency = {};
         this.betterTables = game.modules.get("better-rolltables");
-        //console.log(this);
     }
     // check targets
     async Check() {
         if (this.targets == undefined || this.targets.size <= 0) return;
         for (let entity of this.targets) {
-            //this.targets.map(entity => {
             if (entity.id == canvas.tokens.controlled[0].id) return ui.notifications.warn(game.i18n.localize('Looting.Errors.thesame'));
             if (this.CheckDistance(entity) != true) return;
             this.data.targetid = entity.id;
@@ -37,12 +35,13 @@ export class ActionLoot {
             if (entity.actor.data.data.attributes.hp.value <= 0 && !entity.isPC) {
                 // Morto - lootiar
                 titleChat = game.i18n.localize('Looting.MsgChat.looting');
-                if (entity.getFlag(SETTINGS.MODULE_NAME, SETTINGS.LOOT)) return ui.notifications.warn(game.i18n.format("Looting.Errors.invalidCheck", { token: entity.name })); // já foi lootiado.
+                let readyloot = entity.document.getFlag(SETTINGS.MODULE_NAME, SETTINGS.LOOT); //lootFlag ?.looting;
+                if (readyloot) return ui.notifications.warn(game.i18n.format("Looting.Errors.invalidCheck", { token: entity.name })); // já foi lootiado.
                 await this.LootNPC(entity.actor, this.actor);
             } else {
                 ui.notifications.warn(game.i18n.localize('Looting.Errors.isalive'))
                 // vivo - Roubar
-                if (entity.actor.getFlag(SETTINGS.MODULE_LOOT_SHEET, SETTINGS.LOOT_SHEET)) return; // não é um bau ou mercador.
+                if (entity.actor._getSheetClass().name == SETTINGS.MODULE_LOOT_SHEET) return; // não é um bau ou mercador.
                 //this.AttempPickpocket(entity.actor, this.actor);
             }
             await this.AttempItemRemove(entity.actor);
@@ -103,17 +102,19 @@ export class ActionLoot {
         } else if (game.settings.get(SETTINGS.MODULE_NAME, "lootSystem") == "mode3") {
 
         }
-        this.loots.map(a => {
-            a._data.data.equipped = false;
+        this.loots = this.loots.map(i => i.toObject());
+        await this.loots.map(a => {
+            a.data.equipped = false;
         });
-        await tokenactor.createEmbeddedEntity("OwnedItem", this.loots, { noHook: true });
+        //console.log(this.loots, "item");
+        await tokenactor.createEmbeddedDocuments("Item", this.loots, { noHook: true });
         await tokenactor.update({ "data.currency": this.data.currency });
     }
 
     async AttempItemRemove(target) {
         if (game.settings.get(SETTINGS.MODULE_NAME, "removeItem")) {
             let items = await this.FilterInventory(target.items);
-            this.data.currentItems = items.map(i => i._id);
+            this.data.currentItems = items.map(i => i.id);
         }
     }
 
@@ -137,7 +138,7 @@ export class ActionLoot {
             let agio = (game.settings.get(SETTINGS.MODULE_NAME, "lootEquipable")) ? game.settings.get(SETTINGS.MODULE_NAME, "lootEquipableAgil") : 0;
             // weapon equipment consumable
             if (!game.settings.get(SETTINGS.MODULE_NAME, "lootEquipable") && item.data.data.equipped) return;
-            item._data.data.equipped = false;
+            item.data.data.equipped = false;
             if (item.type === "weapon") {
                 if (item.data.data.weaponType == "siege" || item.data.data.weaponType == "natural") return;
                 if (!check && (Math.floor(Math.random() * 100) + 1) <= game.settings.get(SETTINGS.MODULE_NAME, "perWeapons") + agio) return;  
@@ -199,8 +200,10 @@ export class ActionLoot {
             let re = await table.roll();
             let result = await re.results;
             for (let r of result) {
-                let packs = game.packs.get(r.collection);
-                let entity = (packs) ? await packs.getEntity(r.resultId) : game.items.get(r.resultId);
+                console.log(r, "item");
+                let packs = game.packs.get(r.data.collection);
+                let entity = (packs) ? await packs.getDocument(r.data.resultId) : game.items.get(r.data.resultId);
+                console.log(entity, packs);
                 let matches = entity.name.match(/\([a-z]{1,2}\)$/gs);
                 if (matches) {
                     let coin = matches[0].substring(1, matches[0].length - 1);
@@ -219,7 +222,7 @@ export class ActionLoot {
         if (!this.lootCurrency[`${coin}`]) this.lootCurrency[`${coin}`] = 0;
         if (item.data.data.source.match(/[dkfhxo]{1}[0-9\s\+\-\*\/]+/gs)) {
             let r = new Roll(item.data.data.source);
-            this.lootCurrency[`${coin}`] += r.evaluate().total;
+            this.lootCurrency[`${coin}`] += r.evaluate({async: false}).total;
         } else {
             this.lootCurrency[`${coin}`] += item.data.data.quantity;
         }
