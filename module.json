@@ -1,15 +1,16 @@
 {
   "name": "innocenti-looting",
-  "title": "Innocenti Looting",
+  "title": "Innocenti's Looting",
   "description": "Modules for loot from monsters and Npcs",
-  "version": "0.2.7",
-  "minimumCoreVersion": "0.7.0",
-  "compatibleCoreVersion": "0.7.9",
+  "version": "0.3.7",
+  "minimumCoreVersion": "0.8.0",
+  "compatibleCoreVersion": "0.8.6",
   "author": "Renato innocenti",
   "authors": [
     {
       "name": "Innocenti",
-      "discord": "Innocenti#1455"
+      "discord": "Innocenti#1455",
+      "email": "renato.innocenti@gmail.com"
     }
   ],
   "systems": [ "dnd5e" ],
