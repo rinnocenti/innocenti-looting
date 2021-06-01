@@ -2,7 +2,7 @@
 export let SETTINGS = {
     MODULE_NAME: 'innocenti-looting',
     LOOT_SHEET: 'lootsheettype',
-    MODULE_LOOT_SHEET: 'lootsheetnpc5e',
+    MODULE_LOOT_SHEET: 'LootSheet5eNPC',
     TYPE_LOOT_SHEET: 'Loot',
     LOOT: 'looting'
 }

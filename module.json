@@ -15,12 +15,7 @@
   ],
   "systems": [ "dnd5e" ],
   "esmodules": [ "main.js", "scripts/settings.js" ],
-  "dependencies": [
-    {
-      "name": "lootsheetnpc5e",
-      "manifest": "https://raw.githubusercontent.com/jopeek/fvtt-loot-sheet-npc-5e/master/module.json"
-    }
-  ],
+  "dependencies": [],
   "languages": [
     {
       "lang": "pt-BR",

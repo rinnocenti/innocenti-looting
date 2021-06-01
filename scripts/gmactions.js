@@ -4,7 +4,7 @@ export class GMActions {
         this.data = data;
         this.targetToken = canvas.tokens.get(data.targetid);
         this.token = canvas.tokens.get(data.tokenid);
-        this.actor = game.actors.entities.find(a => a.id === this.token.actor.id);
+        this.actor = game.actors.contents.find(a => a.id === this.token.actor.id);
     }
 
     async Init() {     
@@ -15,12 +15,12 @@ export class GMActions {
     }
 
     async RemoveItems(actor, currentItems) {
-        actor.deleteEmbeddedEntity("OwnedItem", currentItems);
+        actor.deleteEmbeddedDocuments("Item", currentItems);
     }
 
     async SetFlags() {
         if (this.data.looting == true) {
-            await this.targetToken.setFlag(SETTINGS.MODULE_NAME, SETTINGS.LOOT, true);
+            await this.targetToken.document.setFlag(SETTINGS.MODULE_NAME, SETTINGS.LOOT, true);
             console.log("SALVANDO FLAGS...", this.data);
         }
     }
