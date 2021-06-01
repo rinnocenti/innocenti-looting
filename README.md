@@ -11,7 +11,7 @@ youtube Video:
 <a href="https://www.youtube.com/embed/v6JPQ9MWi4U">Youtube - Innocenti Looting</a>
 
 ## Installation
-You can install this module by using the following manifest URL : https://raw.githubusercontent.com/rinnocenti/innocenti-looting/main/module.json
+You can install this module by using the following manifest URL : `https://raw.githubusercontent.com/rinnocenti/innocenti-looting/0.7.9/module.json`
 
 ## Dependencies
 This module was created to work in a world with other support modules so you don't have to increase your workload.

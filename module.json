@@ -24,7 +24,7 @@
   "languages": [
     {
       "lang": "pt-BR",
-      "name": "Português (Brasil)",
+      "name": "Portuguï¿½s (Brasil)",
       "path": "lang/pt-BR.json"
     },
     {
@@ -83,9 +83,9 @@
     }
   ],
   "socket": true,
-  "url": "https://github.com/rinnocenti/innocenti-looting",
-  "manifest": "https://raw.githubusercontent.com/rinnocenti/innocenti-looting/main/module.json",
-  "download": "https://github.com/rinnocenti/innocenti-looting/archive/main.zip",
+  "url": "https://github.com/rinnocenti/innocenti-looting/tree/0.7.9",
+  "manifest": "https://raw.githubusercontent.com/rinnocenti/innocenti-looting/0.7.9/module.json",
+  "download": "https://github.com/rinnocenti/innocenti-looting/archive/refs/tags/0.2.7-FVTT0.7.9.zip",
   "bugs": "https://github.com/rinnocenti/innocenti-looting/issues",
-  "readme": "https://github.com/rinnocenti/innocenti-looting/blob/main/README.md"
+  "readme": "https://github.com/rinnocenti/innocenti-looting/blob/0.7.9/README.md"
 }
