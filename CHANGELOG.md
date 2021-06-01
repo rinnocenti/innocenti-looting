@@ -1,3 +1,5 @@
+#v.0.2.7
+* Final versoin for Foundry 0.7.9
 #v.0.2.5
 
 * Fix Bug in simple currency
