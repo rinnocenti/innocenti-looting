@@ -2,7 +2,7 @@
   "name": "innocenti-looting",
   "title": "Innocenti's Looting",
   "description": "Modules for loot from monsters and Npcs",
-  "version": "0.3.7",
+  "version": "0.3.1",
   "minimumCoreVersion": "0.8.0",
   "compatibleCoreVersion": "0.8.6",
   "author": "Renato innocenti",
@@ -19,7 +19,7 @@
   "languages": [
     {
       "lang": "pt-BR",
-      "name": "Portugu�s (Brasil)",
+      "name": "Português (Brasil)",
       "path": "lang/pt-BR.json"
     },
     {
@@ -78,9 +78,9 @@
     }
   ],
   "socket": true,
-  "url": "https://github.com/rinnocenti/innocenti-looting/tree/0.7.9",
-  "manifest": "https://raw.githubusercontent.com/rinnocenti/innocenti-looting/0.7.9/module.json",
-  "download": "https://github.com/rinnocenti/innocenti-looting/archive/refs/tags/0.2.7-FVTT0.7.9.zip",
+  "url": "https://github.com/rinnocenti/innocenti-looting/",
+  "manifest": "https://raw.githubusercontent.com/rinnocenti/innocenti-looting/main/module.json",
+  "download": "https://github.com/rinnocenti/innocenti-looting/archive/refs/heads/main.zip",
   "bugs": "https://github.com/rinnocenti/innocenti-looting/issues",
-  "readme": "https://github.com/rinnocenti/innocenti-looting/blob/0.7.9/README.md"
+  "readme": "https://github.com/rinnocenti/innocenti-looting/blob/main/README.md"
 }

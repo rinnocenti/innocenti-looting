@@ -2,6 +2,9 @@
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D02SYZA)
 
+**THIS VERSION IS ONLY FOR FOUNDRY 0.8. SERIES**
+FOR 7.9 SEE THAT BRANCH:`https://raw.githubusercontent.com/rinnocenti/innocenti-looting/0.7.9/module.json`
+
 A simple module to use for looting dead NPCs tokens.
 With it the token's targets will have their items moved to the user's sheet.
 (with the exception of some like natural weapons, feats and spells).
@@ -11,7 +14,7 @@ youtube Video:
 <a href="https://www.youtube.com/embed/v6JPQ9MWi4U">Youtube - Innocenti Looting</a>
 
 ## Installation
-You can install this module by using the following manifest URL : `https://raw.githubusercontent.com/rinnocenti/innocenti-looting/0.7.9/module.json`
+You can install this module by using the following manifest URL : `https://raw.githubusercontent.com/rinnocenti/innocenti-looting/master/module.json`
 
 ## Dependencies
 This module was created to work in a world with other support modules so you don't have to increase your workload.
