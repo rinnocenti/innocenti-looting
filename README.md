@@ -1,6 +1,9 @@
 # Innocenti Looting
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D02SYZA)
+#This module has been discontinued in favor of a new version:#
+https://github.com/rinnocenti/innocenti-loot
+
 
 **THIS VERSION IS ONLY FOR FOUNDRY 0.8. SERIES**
 FOR 7.9 SEE THAT BRANCH:`https://raw.githubusercontent.com/rinnocenti/innocenti-looting/0.7.9/module.json`
